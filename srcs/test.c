@@ -91,6 +91,8 @@ int main() {
     printf("Str: %s, base %s, atoi res: %i\n", "80000000", "0123456789abcdef", ft_atoi_base("80000000", "0123456789abcdef"));
     printf("Str: %s, base %s, atoi res: %i\n", " \t\r\n\b\v\f  \t-7fffffff", "0123456789abcdef", ft_atoi_base(" \t\r\n\b\v\f  \t-7fffffff", "0123456789abcdef"));
     printf("Str: %s, base %s, atoi res: %i\n", " \t\r\n\b\v\f  \t-7fffffff", "\t\n\r0123456789abcdef", ft_atoi_base(" \t\r\n\b\v\f  \t-7fffffff", "\t\n\r0123456789abcdef"));
+    printf("Str: %p, base %s, atoi res: %i\n", NULL, "0123456789abcdef", ft_atoi_base(NULL, "0123456789abcdef"));
+    printf("Str: %s, base %p, atoi res: %i\n", "7fffffff", NULL, ft_atoi_base("7fffffff", NULL));
 
     return 0;
 }

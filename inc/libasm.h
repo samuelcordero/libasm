@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 23:59:42 by sacorder          #+#    #+#             */
-/*   Updated: 2024/09/24 17:40:12 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/09/24 22:54:22 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_list {
     struct s_list *next;
 } t_list;
 
-
+extern void     ft_list_push_front(t_list **begin_list, void *data);
+extern int      ft_list_size(t_list *begin_list);
 
 #endif

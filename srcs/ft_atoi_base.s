@@ -8,6 +8,11 @@ ft_atoi_base:
     mov     r12, rdi                ; store str in callee saved reg
     mov     r13, rsi                ; store base in callee saved reg
 
+    cmp     rdi, 0
+    je      .error
+    cmp     rsi, 0
+    je      .error
+
 .check_base:
     mov     rdi, r13
     call    ft_strlen               ; check base len
@@ -18,8 +23,6 @@ ft_atoi_base:
     cmp     byte [rcx], 0
     je      .done_check_spaces      ; loop end
     cmp     byte [rcx], 32          ; ' '
-    je      .error
-    cmp     byte [rcx], 8
     je      .error
     cmp     byte [rcx], 9
     je      .error
@@ -63,8 +66,6 @@ ft_atoi_base:
     xor     rax, rax                ; clear rax for res
 .skip_spaces:
     cmp     byte [rcx], 32
-    je      .space_detected
-    cmp     byte [rcx], 8
     je      .space_detected
     cmp     byte [rcx], 9
     je      .space_detected
