@@ -19,6 +19,18 @@ ft_atoi_base:
     je      .done_check_spaces      ; loop end
     cmp     byte [rcx], 32          ; ' '
     je      .error
+    cmp     byte [rcx], 8
+    je      .error
+    cmp     byte [rcx], 9
+    je      .error
+    cmp     byte [rcx], 10
+    je      .error
+    cmp     byte [rcx], 11
+    je      .error
+    cmp     byte [rcx], 12
+    je      .error
+    cmp     byte [rcx], 13
+    je      .error
     cmp     byte [rcx], 43          ; '+'
     je      .error
     cmp     byte [rcx], 45          ; '-'
@@ -51,9 +63,23 @@ ft_atoi_base:
     xor     rax, rax                ; clear rax for res
 .skip_spaces:
     cmp     byte [rcx], 32
-    jne     .convert_start
+    je      .space_detected
+    cmp     byte [rcx], 8
+    je      .space_detected
+    cmp     byte [rcx], 9
+    je      .space_detected
+    cmp     byte [rcx], 10
+    je      .space_detected
+    cmp     byte [rcx], 11
+    je      .space_detected
+    cmp     byte [rcx], 12
+    je      .space_detected
+    cmp     byte [rcx], 13
+    je      .space_detected
+    jmp     .convert_start
+.space_detected:
     inc     rcx
-    jmp    .skip_spaces
+    jmp     .skip_spaces
 .convert_start:
     mov     r8, 1
 .sign_loop:
@@ -61,33 +87,34 @@ ft_atoi_base:
     je      .pos_sign
     cmp     byte [rcx], 45
     je      .neg_sign
-    jmp    .convert_loop
+    jmp     .convert_loop
 .neg_sign
     neg     r8
 .pos_sign
     inc     rcx
     jmp     .sign_loop
+
 .convert_loop:
     cmp     byte [rcx], 0           ; if str end
     je      .end                    ; go to end
     mov     rdx, r13                ; get base
 .convert_loop_in:
     cmp     byte [rdx], 0
-    je      .end
+    je      .end                    ; if no char not in base go to end
     mov     sil, byte[rdx]
     cmp     sil, byte[rcx]
-    je      .convert_loop_in_end
+    je      .convert_loop_in_end    ; if char found
     inc     rdx
     jmp     .convert_loop_in
 .convert_loop_in_end:
-    sub     rdx, r13
-    imul    rax, rdi
-    add     rax, rdx
+    sub     rdx, r13                ; calculate digit value
+    imul    rax, rdi                ; multiply rax times base
+    add     rax, rdx                ; add value to rax
     inc     rcx
     jmp     .convert_loop
 
 .end:
-    imul    rax, r8
+    imul    rax, r8                 ; add sign
     pop     r13
     pop     r12
     ret
