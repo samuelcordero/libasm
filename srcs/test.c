@@ -94,5 +94,21 @@ int main() {
     printf("Str: %p, base %s, atoi res: %i\n", NULL, "0123456789abcdef", ft_atoi_base(NULL, "0123456789abcdef"));
     printf("Str: %s, base %p, atoi res: %i\n", "7fffffff", NULL, ft_atoi_base("7fffffff", NULL));
 
+    //ft_list_push_front
+
+    t_list  *list = NULL;
+    t_list  *elem;
+
+    elem = malloc(sizeof(t_list));
+    ft_list_push_front(&list, elem);
+    elem = malloc(sizeof(t_list));
+    ft_list_push_front(&list, elem);
+    elem = malloc(sizeof(t_list));
+    ft_list_push_front(&list, elem);
+
+    //ft_list_size
+
+    printf("List size: %i (should be 3)\n", ft_list_size(list));
+
     return 0;
 }

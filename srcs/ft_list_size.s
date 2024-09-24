@@ -8,7 +8,7 @@ ft_list_size:
 
 .loop:
     inc     rax
-    mov     rdi, [rdi]      ; move to next
+    mov     rdi, [rdi + 8]      ; move to next
     cmp     rdi, 0
     jne     .loop           ; if not null go to loop
 

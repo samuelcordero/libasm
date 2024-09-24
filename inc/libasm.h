@@ -6,7 +6,7 @@
 /*   By: sacorder <sacorder@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 23:59:42 by sacorder          #+#    #+#             */
-/*   Updated: 2024/09/24 22:54:22 by sacorder         ###   ########.fr       */
+/*   Updated: 2024/09/24 23:15:32 by sacorder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ extern char     *ft_strdup(const char *s);
 extern int      ft_atoi_base(char *str, char *base);
 
 typedef struct s_list {
-    void *data;
-    struct s_list *next;
-} t_list;
+    void            *data;
+    struct s_list   *next;
+}   t_list;
 
 extern void     ft_list_push_front(t_list **begin_list, void *data);
 extern int      ft_list_size(t_list *begin_list);
+extern void     ft_list_sort(t_list **begin_list, int (*cmp)());
+extern void     ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
 
 #endif
