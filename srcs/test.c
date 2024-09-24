@@ -67,5 +67,28 @@ int main() {
     free(dup);
     free(dup2);
 
+    //ft_atoi_base
+    printf("Str: %s, base %s, atoi res: %i\n", "", "", ft_atoi_base("", ""));
+    printf("Str: %s, base %s, atoi res: %i\n", "0", "0123456789", ft_atoi_base("0", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "2147483647", "0123456789", ft_atoi_base("2147483647", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "-2147483648", "0123456789", ft_atoi_base("-2147483648", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "42", "0123456789", ft_atoi_base("42", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "101010", "01", ft_atoi_base("101010", "01"));
+    printf("Str: %s, base %s, atoi res: %i\n", "42", "+-0123", ft_atoi_base("42", "+-0123"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   42", "0123456789", ft_atoi_base("   42", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   101010", "01", ft_atoi_base("   101010", "01"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   -42", "0123456789", ft_atoi_base("   -42", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   -101010", "01", ft_atoi_base("   -101010", "01"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   +-42", "0123456789", ft_atoi_base("   +-42", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   -+101010", "01", ft_atoi_base("   -+101010", "01"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   --42", "0123456789", ft_atoi_base("   --42", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   --101010", "01", ft_atoi_base("   --101010", "01"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   --42a", "0123456789", ft_atoi_base("   --42a", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   --101010a", "01", ft_atoi_base("   --101010a", "01"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   --42  ", "0123456789", ft_atoi_base("   --42  ", "0123456789"));
+    printf("Str: %s, base %s, atoi res: %i\n", "   --101010  ", "01", ft_atoi_base("   --101010  ", "01"));
+    printf("Str: %s, base %s, atoi res: %i\n", "7fffffff", "0123456789abcdef", ft_atoi_base("7fffffff", "0123456789abcdef"));
+    printf("Str: %s, base %s, atoi res: %i\n", "80000000", "0123456789abcdef", ft_atoi_base("80000000", "0123456789abcdef"));
+
     return 0;
 }
