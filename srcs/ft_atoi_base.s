@@ -89,9 +89,9 @@ ft_atoi_base:
     cmp     byte [rcx], 45
     je      .neg_sign
     jmp     .convert_loop
-.neg_sign
+.neg_sign:
     neg     r8
-.pos_sign
+.pos_sign:
     inc     rcx
     jmp     .sign_loop
 

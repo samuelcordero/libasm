@@ -7,8 +7,8 @@ ft_strcmp:
 
 .loop:
     mov     al, [rdi]
-    mov     bl, [rsi]
-    cmp     al, bl         ; compare if equal
+    mov     dl, [rsi]
+    cmp     al, dl         ; compare if equal
     jne      .done         ; if not go to return
     cmp     al, 0          ; compare if null byte
     jne      .done         ; if not go to return
@@ -18,7 +18,7 @@ ft_strcmp:
 
 .done:
     mov     al, [rdi]
-    mov     bl, [rsi]
-    sub     al, bl
+    mov     dl, [rsi]
+    sub     al, dl
     movsx   rax, al
     ret

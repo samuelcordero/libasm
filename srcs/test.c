@@ -3,6 +3,13 @@
 #include <stdio.h>
 #include <string.h>
 
+int ft_cmp_and_print(char *s1, char *s2) {
+    printf("s1:(%s), s2:(%s)\n", s1, s2);
+    sleep(1);
+    
+    return (ft_strcmp(s1,s2));
+}
+
 int main() {
     char *test = "42 Madrid";
     char *test2 = "asdfkjlñajksldñfjagjañtrwiotwjalkfjakfjvbcnk";
@@ -100,15 +107,27 @@ int main() {
     t_list  *elem;
 
     elem = malloc(sizeof(t_list));
+    elem->data = ft_strdup(test);
     ft_list_push_front(&list, elem);
     elem = malloc(sizeof(t_list));
+    elem->data = ft_strdup("1no i didnt check the mallocs im a criminal");
     ft_list_push_front(&list, elem);
     elem = malloc(sizeof(t_list));
+    elem->data = ft_strdup("2hellooo my friendsss");
+    ft_list_push_front(&list, elem);
+    elem = malloc(sizeof(t_list));
+    elem->data = ft_strdup("3no i didnt check the mallocs im a criminal");
     ft_list_push_front(&list, elem);
 
     //ft_list_size
 
-    printf("List size: %i (should be 3)\n", ft_list_size(list));
+    printf("List size: %i (should be 4)\n", ft_list_size(list));
+
+    //ft_list_sort
+
+    ft_list_sort(&list, &ft_strcmp);
+    
+    ft_list_sort(&list, &ft_cmp_and_print);
 
     return 0;
 }
