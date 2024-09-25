@@ -10,6 +10,13 @@ int ft_cmp_and_print(char *s1, char *s2) {
     return (ft_strcmp(s1,s2));
 }
 
+int ft_zero(char *s1, char *s2) {
+    printf("s1:(%s), s2:(%s)\n", s1, s2);
+    sleep(1);
+    
+    return (0);
+}
+
 int main() {
     char *test = "42 Madrid";
     char *test2 = "asdfkjlñajksldñfjagjañtrwiotwjalkfjakfjvbcnk";
@@ -107,9 +114,6 @@ int main() {
     t_list  *elem;
 
     elem = malloc(sizeof(t_list));
-    elem->data = ft_strdup(test);
-    ft_list_push_front(&list, elem);
-    elem = malloc(sizeof(t_list));
     elem->data = ft_strdup("1no i didnt check the mallocs im a criminal");
     ft_list_push_front(&list, elem);
     elem = malloc(sizeof(t_list));
@@ -117,6 +121,9 @@ int main() {
     ft_list_push_front(&list, elem);
     elem = malloc(sizeof(t_list));
     elem->data = ft_strdup("3no i didnt check the mallocs im a criminal");
+    ft_list_push_front(&list, elem);
+    elem = malloc(sizeof(t_list));
+    elem->data = ft_strdup(test);
     ft_list_push_front(&list, elem);
 
     //ft_list_size
@@ -126,8 +133,15 @@ int main() {
     //ft_list_sort
 
     ft_list_sort(&list, &ft_strcmp);
-    
     ft_list_sort(&list, &ft_cmp_and_print);
+
+    //ft_list_remove_if
+
+    ft_list_remove_if(&list, test, &ft_strcmp, &free);
+    printf("List size after removing 1: %i (should be 3)\n", ft_list_size(list));
+    
+    ft_list_remove_if(&list, "always true", &ft_zero, &free);
+    printf("List should be NULL after removing all:%p\n", list);
 
     return 0;
 }

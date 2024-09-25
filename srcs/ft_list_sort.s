@@ -35,6 +35,8 @@ ft_list_sort:
     mov     rbx, r12
 
 .sort_loop:
+    cmp     r14, 0
+    je      .check_sort
     cmp     qword [r14 + 8], 0
     je      .check_sort
     mov     rdi, [r14]          ; load data pointer from first elem to first operand to rdi
@@ -43,10 +45,10 @@ ft_list_sort:
     call    r13
     cmp     rax, 0
     jg      .swap_elems
-.sort_loop_after_swap:
     mov     rbx, r14
     add     rbx, 8
     mov     r14, [r14 + 8]
+.sort_loop_after_swap:
     jmp     .sort_loop
 
 .swap_elems:
@@ -55,6 +57,8 @@ ft_list_sort:
     mov     [r14 + 8], r15      ; curr-next = curr-next-next
     mov     [rax + 8], r14      ; curr-next-next = curr
     mov     [rbx], rax          ; pointer to curr = curr-next
+    mov     rbx, rax
+    add     rbx, 8
     jmp     .sort_loop_after_swap
 
 .done:

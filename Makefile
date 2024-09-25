@@ -8,7 +8,8 @@ SRCS =	srcs/ft_strlen.s \
 		srcs/ft_atoi_base.s \
 		srcs/ft_list_push_front.s \
 		srcs/ft_list_size.s \
-		srcs/ft_list_sort.s
+		srcs/ft_list_sort.s \
+		srcs/ft_list_remove_if.s
 OBJS = $(SRCS:.s=.o)
 NASMFLAGS = -f elf64
 NASM = nasm
