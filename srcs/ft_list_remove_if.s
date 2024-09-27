@@ -10,7 +10,7 @@ ft_list_remove_if:
     push    r14
     push    r15
     push    rbx
-    sub     rsp, 16         ; allocate for two 64 bit values
+    sub     rsp, 24         ; allocate for two 64 bit values
     mov     r12, rdi        ; store **begin ptr
     mov     [rsp + 8], rsi  ; store data ref addr in stack
     mov     r14, rdx        ; store cmp funct addr

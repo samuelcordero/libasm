@@ -15,6 +15,7 @@ NASMFLAGS = -f elf64
 NASM = nasm
 TEST = srcs/test.c
 TESTEXEC = test
+CC = gcc
 
 all: $(NAME)
 
