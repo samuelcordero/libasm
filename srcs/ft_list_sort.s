@@ -17,6 +17,7 @@ ft_list_sort:
 
 .check_sort:
     mov     r14, [r12]      ; *begin at r14
+    mov     rbx, r12
 
 .check_sort_loop:
     cmp     qword [r14 + 8], 0  ; if next = NULL
@@ -26,7 +27,9 @@ ft_list_sort:
     mov     rsi, [rsi]
     call    r13                 ; call cmp
     cmp     rax, 0              ; check res
-    jg      .sort               ; if second < first -> go to sort
+    jg      .swap_elems         ; if second < first -> swap elems
+    mov     rbx, r14
+    add     rbx, 8
     mov     r14, [r14 + 8]      ; else go to next
     jmp     .check_sort_loop
 

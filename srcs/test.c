@@ -132,14 +132,14 @@ int main() {
 
     //ft_list_sort
 
-    ft_list_sort(&list, &ft_strcmp);
     ft_list_sort(&list, &ft_cmp_and_print);
+    ft_list_sort(&list, &ft_strcmp);
 
     //ft_list_remove_if
 
     ft_list_remove_if(&list, test, &ft_strcmp, &free);
     printf("List size after removing 1: %i (should be 3)\n", ft_list_size(list));
     ft_list_remove_if(&list, "always true", &ft_zero, &free);
-    printf("List should be NULL after removing all:%p\n", list);
+    printf("List should be NULL ((nil) ptr) after removing all:%p\n", list);
     return 0;
 }
