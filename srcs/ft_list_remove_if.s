@@ -43,7 +43,7 @@ ft_list_remove_if:
     mov     rdi, [r12]
     call    r15                 ; free data with data_free func
     mov     rdi, r12
-    call    free                ; free node
+    call    free wrt ..plt      ; free node
     mov     r12, [rsp]          ; situate iterator to next node
     jmp     .after_remove_data
 

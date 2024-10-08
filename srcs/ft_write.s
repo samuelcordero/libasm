@@ -13,7 +13,7 @@ ft_write:
     neg     rax
     push    rbx
     mov     rbx, rax
-    call    __errno_location
+    call    __errno_location wrt ..plt
     mov     [rax], rbx
     mov     rax, -1
     pop     rbx

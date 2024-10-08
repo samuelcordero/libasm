@@ -35,5 +35,5 @@ re:: fclean
 re:: all
 
 test: $(NAME)
-	$(CC) -Wall -Werror -Wextra -no-pie -Iinc $(TEST) -o $(TESTEXEC) -L. -lasm
+	$(CC) -Wall -Werror -Wextra -Iinc $(TEST) -o $(TESTEXEC) -L. -lasm
 
