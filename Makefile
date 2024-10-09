@@ -4,13 +4,14 @@ SRCS =	srcs/ft_strlen.s \
 		srcs/ft_strcmp.s \
 		srcs/ft_write.s \
 		srcs/ft_read.s \
-		srcs/ft_strdup.s \
-		srcs/ft_atoi_base.s \
-		srcs/ft_list_push_front.s \
-		srcs/ft_list_size.s \
-		srcs/ft_list_sort.s \
-		srcs/ft_list_remove_if.s
+		srcs/ft_strdup.s
+BONUSSRCS =	srcs/ft_atoi_base.s \
+			srcs/ft_list_push_front.s \
+			srcs/ft_list_size.s \
+			srcs/ft_list_sort.s \
+			srcs/ft_list_remove_if.s
 OBJS = $(SRCS:.s=.o)
+BONUSOBJS = $(BONUSSRCS:.s=.o)
 NASMFLAGS = -f elf64
 NASM = nasm
 TEST = srcs/test.c
@@ -25,8 +26,11 @@ srcs/%.o: srcs/%.s
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
+bonus: $(OBJS) $(BONUSOBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUSOBJS)
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BONUSOBJS)
 
 fclean: clean
 	$(RM) $(NAME) $(TESTEXEC)
@@ -34,6 +38,10 @@ fclean: clean
 re:: fclean
 re:: all
 
-test: $(NAME)
+rebonus:: fclean
+rebonus:: bonus
+
+test: bonus
 	$(CC) -Wall -Werror -Wextra -Iinc $(TEST) -o $(TESTEXEC) -L. -lasm
 
+.PHONY: all bonus clean fclean re rebonus test

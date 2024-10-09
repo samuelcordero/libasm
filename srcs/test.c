@@ -54,16 +54,16 @@ int main() {
 
     //write
 
-    write(1, test, 9);
+    write(1, test, ft_strlen(test));
     write(1, "\n", 1);
 
-    ft_write(1, test, 9);
+    ft_write(1, test, ft_strlen(test));
     ft_write(1, "\n", 1);
 
-    write(2, test, 9);
+    write(2, test, ft_strlen(test));
     write(2, "\n", 1);
 
-    ft_write(2, test, 9);
+    ft_write(2, test, ft_strlen(test));
     ft_write(2, "\n", 1);
 
     //read
@@ -103,8 +103,8 @@ int main() {
     printf("Str: %s, base %s, atoi res: %i\n", "   --101010  ", "01", ft_atoi_base("   --101010  ", "01"));
     printf("Str: %s, base %s, atoi res: %i\n", "7fffffff", "0123456789abcdef", ft_atoi_base("7fffffff", "0123456789abcdef"));
     printf("Str: %s, base %s, atoi res: %i\n", "80000000", "0123456789abcdef", ft_atoi_base("80000000", "0123456789abcdef"));
-    printf("Str: %s, base %s, atoi res: %i\n", " \t\r\n\b\v\f  \t-7fffffff", "0123456789abcdef", ft_atoi_base(" \t\r\n\b\v\f  \t-7fffffff", "0123456789abcdef"));
-    printf("Str: %s, base %s, atoi res: %i\n", " \t\r\n\b\v\f  \t-7fffffff", "\t\n\r0123456789abcdef", ft_atoi_base(" \t\r\n\b\v\f  \t-7fffffff", "\t\n\r0123456789abcdef"));
+    printf("Str: %s, base %s, atoi res: %i\n", " \t\r\n\v\f  \t-7fffffff", "0123456789abcdef", ft_atoi_base(" \t\r\n\v\f  \t-7fffffff", "0123456789abcdef"));
+    printf("Str: %s, base %s, atoi res: %i\n", " \t\r\n\v\f  \t-7fffffff", "\t\n\r0123456789abcdef", ft_atoi_base(" \t\r\n\v\f  \t-7fffffff", "\t\n\r0123456789abcdef"));
     printf("Str: %p, base %s, atoi res: %i\n", NULL, "0123456789abcdef", ft_atoi_base(NULL, "0123456789abcdef"));
     printf("Str: %s, base %p, atoi res: %i\n", "7fffffff", NULL, ft_atoi_base("7fffffff", NULL));
 
