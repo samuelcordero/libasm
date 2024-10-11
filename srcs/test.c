@@ -67,9 +67,9 @@ int main() {
     ft_write(2, "\n", 1);
 
     //read
-    *(dest + read(0, dest, 10)) = 0;
+    *(dest + read(0, dest, sizeof(dest))) = 0;
     printf("read with read: %s\n", dest);
-    *(dest2 + ft_read(0, dest2, 10)) = 0;
+    *(dest2 + ft_read(0, dest2, sizeof(dest2))) = 0;
     printf("read with ft_read: %s\n", dest2);
 
     //strdup
